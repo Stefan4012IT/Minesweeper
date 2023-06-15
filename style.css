@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #06161C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#board {
+    box-shadow: 50px 50px 20px #000602;
+}
+
+
+
+.initBoard {
+    animation: rotateBoard 1s forwards;
+}
+
+
+.tile {
+    width: 25px;
+    height: 25px;
+    background-color: #ccc;
+    display: inline-block;
+    border: 1px solid #1A2808;
+    transition: transform .3s;
+}
+
+.tile:active {
+    transform: scale(.9);
+}
+
+
+.revealed {
+    background-color: #3E3316 !important;
+    position: relative;
+}
+
+.revealed p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: #74684A;
+}
+
+div:not(.revealed, .mine, .marker) {
+    background-image: linear-gradient(to right bottom, #011107, #02150a, #04190c, #061c0e, #071f10);
+}
+
+.hidden {
+    background-color: #999;
+}
+
+.mine {
+    animation: mineBlow 1s infinite;
+}
+
+.marker {
+    animation: markerProtect 1s infinite;
+}
+
+@keyframes markerProtect {
+    0% {
+        background-color: #10262E;
+    }
+
+    100% {
+        background-color: #000405;
+    }
+}
+
+@keyframes mineBlow {
+    0% {
+        background-color: #3E1426;
+    }
+
+    100% {
+        background-color: #070003;
+    }
+}
+
+@keyframes rotateBoard {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
